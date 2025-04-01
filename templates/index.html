@@ -6,26 +6,15 @@
     <link rel="stylesheet" href="https://www.w3schools.com/w3css/5/w3.css">
     <title>Hello World</title>
     <link rel="stylesheet" href="styles.css">
-
-
-    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/fontawesome.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/brands.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/solid.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/fontawesome.min.css">  
 
-    <!-- <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var iframe = document.getElementById('youtubeVideo');
-            iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
-        });
-    </script> -->
     <script>
+        let isMuted = false;
+        
         function playAudio() {
             const audio = document.getElementById('bgMusic');
             audio.volume = 0.5;
-            audio.currentTime = 0; // 重置播放時間
+            audio.currentTime = 0;
             
             const playPromise = audio.play();
             
@@ -40,38 +29,43 @@
             }
         }
     
-        // 在頁面載入和重新整理時都執行
+        function toggleMute() {
+            const audio = document.getElementById('bgMusic');
+            const muteBtn = document.getElementById('muteBtn');
+            isMuted = !isMuted;
+            audio.muted = isMuted;
+            muteBtn.innerHTML = isMuted ? '<i class="fas fa-volume-mute"></i>' : '<i class="fas fa-volume-up"></i>';
+        }
+        
         window.addEventListener('load', playAudio);
         window.addEventListener('beforeunload', function() {
             const audio = document.getElementById('bgMusic');
             audio.pause();
             audio.currentTime = 0;
         });
-        </script>
-    
+    </script>
+    <style>
+        audio {
+            margin: 20px auto;
+            width: 300px;
+            height: 40px;
+            background-color: #f0f0f0;
+            border-radius: 5px;
+        }
+        
+        audio::-webkit-media-controls-panel {
+            background-color: #f0f0f0;
+        }
+    </style>
 </head>
 <body>
     <div style="text-align: center;">
         <h1 style="position: relative; z-index: 2;">!!沒錯!!</h1>
-        <img src="/static/Ditto Watching GIF.gif" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; object-fit: cover; z-index: 1;">
+        <img src="/static/Ditto Watching GIF.gif">
     </div>
-        <!-- <button class="w3-button" onclick="alert('Hello World!')">Click Me!</button> -->
-
-    <!-- <div class="w3-container w3-center">
-        <iframe 
-            id="youtubeVideo"
-            width="560" 
-            height="315" 
-            src="https://www.youtube.com/embed/q8jE-xPd_oQ?autoplay=1&mute=0" 
-            title="YouTube video player" 
-            frameborder="0" 
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-            allowfullscreen>
-        </iframe>
-    </div> -->
 
     <div class="w3-container w3-center">
-        <audio id="bgMusic" loop preload="auto">
+        <audio id="bgMusic" loop preload="auto" controls>
             <source src="/bgm/MoonsideHowBGM.mp3" type="audio/mpeg">
             您的瀏覽器不支援音訊播放元素。
         </audio>
