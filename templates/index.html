@@ -7,43 +7,10 @@
     <title>Hello World</title>
     <link rel="stylesheet" href="styles.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-
-    <script>
-        let isMuted = false;
-        
-        function playAudio() {
-            const audio = document.getElementById('bgMusic');
-            audio.volume = 0.5;
-            audio.currentTime = 0;
-            
-            const playPromise = audio.play();
-            
-            if (playPromise !== undefined) {
-                playPromise.catch(error => {
-                    console.log("自動播放失敗:", error);
-                    document.body.addEventListener('click', function() {
-                        audio.currentTime = 0;
-                        audio.play();
-                    }, { once: true });
-                });
-            }
-        }
-    
-        function toggleMute() {
-            const audio = document.getElementById('bgMusic');
-            const muteBtn = document.getElementById('muteBtn');
-            isMuted = !isMuted;
-            audio.muted = isMuted;
-            muteBtn.innerHTML = isMuted ? '<i class="fas fa-volume-mute"></i>' : '<i class="fas fa-volume-up"></i>';
-        }
-        
-        window.addEventListener('load', playAudio);
-        window.addEventListener('beforeunload', function() {
-            const audio = document.getElementById('bgMusic');
-            audio.pause();
-            audio.currentTime = 0;
-        });
-    </script>
+    <script src="ind.js"></script>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/all.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/js/v4-shims.min.js"></script>
     <style>
         audio {
             margin: 20px auto;
@@ -56,6 +23,9 @@
         audio::-webkit-media-controls-panel {
             background-color: #f0f0f0;
         }
+
+
+    
     </style>
 </head>
 <body>
@@ -66,9 +36,20 @@
 
     <div class="w3-container w3-center">
         <audio id="bgMusic" loop preload="auto" controls>
-<!--             <source src="/bgm/MoonsideHowBGM.mp3" type="audio/mpeg">-->
-            <source src="/templates/test.mp3" type="audio/mpeg">
+            <source src="./MoonsideHowBGM.mp3" type="audio/mpeg">
+            您的瀏覽器不支援音訊播放元素。
         </audio>
+
+        <div style="margin: 20px auto;">
+            <iframe width="560" 
+                    height="315" 
+                    src="https://www.youtube.com/embed/q8jE-xPd_oQ?autoplay=1&mute=0&volume=200" 
+                    title="YouTube video player" 
+                    frameborder="0" 
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                    allowfullscreen>
+            </iframe>
+        </div>
     </div>
 </body>
 </html>
