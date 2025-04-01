@@ -21,12 +21,34 @@
             iframe.contentWindow.postMessage('{"event":"command","func":"playVideo","args":""}', '*');
         });
     </script> -->
-    <div class="w3-container w3-center">
-        <audio controls autoplay>
-            <source src="/bgm/MoonsideHowBGM.mp3" type="audio/mpeg">
-            您的瀏覽器不支援音訊播放元素。
-        </audio>
-    </div>
+    <script>
+        function playAudio() {
+            const audio = document.getElementById('bgMusic');
+            audio.volume = 0.5;
+            audio.currentTime = 0; // 重置播放時間
+            
+            const playPromise = audio.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.catch(error => {
+                    console.log("自動播放失敗:", error);
+                    document.body.addEventListener('click', function() {
+                        audio.currentTime = 0;
+                        audio.play();
+                    }, { once: true });
+                });
+            }
+        }
+    
+        // 在頁面載入和重新整理時都執行
+        window.addEventListener('load', playAudio);
+        window.addEventListener('beforeunload', function() {
+            const audio = document.getElementById('bgMusic');
+            audio.pause();
+            audio.currentTime = 0;
+        });
+        </script>
+    
 </head>
 <body>
     <div style="text-align: center;">
@@ -35,7 +57,7 @@
     </div>
         <!-- <button class="w3-button" onclick="alert('Hello World!')">Click Me!</button> -->
 
-    <div class="w3-container w3-center">
+    <!-- <div class="w3-container w3-center">
         <iframe 
             id="youtubeVideo"
             width="560" 
@@ -46,14 +68,13 @@
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
             allowfullscreen>
         </iframe>
-    </div> 
+    </div> -->
 
     <div class="w3-container w3-center">
-        <audio id="bgMusic" loop>
+        <audio id="bgMusic" loop preload="auto">
             <source src="/bgm/MoonsideHowBGM.mp3" type="audio/mpeg">
             您的瀏覽器不支援音訊播放元素。
         </audio>
     </div>
-
 </body>
 </html>
