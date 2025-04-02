@@ -36,6 +36,11 @@
             <source src="/static/bgm/MoonsideHowBGM.mp3" type="audio/mpeg">
             您的瀏覽器不支援音訊播放元素。
         </audio>
+        
+        <audio controls autoplay>
+            <source src="{{ url_for('serve_audio', filename='MoonsideHowBGM.mp3') }}" type="audio/mp3">
+            您的瀏覽器不支援音訊播放元素。
+        </audio>
 
         <div style="margin: 20px auto;">
             <iframe width="560" 
