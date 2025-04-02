@@ -28,20 +28,20 @@
 <body>
     <div style="text-align: center;">
         <h1 style="position: relative; z-index: 2;">!!沒錯!!</h1>
-        <img src="/static/Ditto Watching GIF.gif">
+        <img src="/static/poto/Ditto Watching GIF.gif">
     </div>
 
     <div class="w3-container w3-center">
         <audio id="bgMusic" loop preload="auto" controls>
-            <source src="./MoonsideHowBGM.mp3" type="audio/mpeg">
+            <source src="/static/bgm/MoonsideHowBGM.mp3" type="audio/mpeg">
             您的瀏覽器不支援音訊播放元素。
         </audio>
         <audio controls autoplay>
-            <source src="{{ url_for('serve_audio', filename='BGM.ogg') }}" type="audio/ogg">
+            <source src="{{ url_for('serve_audio', filename='static/bgm/BGM.ogg') }}" type="audio/ogg">
             您的瀏覽器不支援音訊播放元素。
         </audio>
         <audio autoplay controls>
-            <source src="BGM.ogg" type="audio/ogg">
+            <source src="/static/bgmBGM.ogg" type="audio/ogg">
             您的瀏覽器不支援音訊播放元素。
         </audio>
 
