@@ -31,17 +31,34 @@
         <img src="/static/poto/Ditto Watching GIF.gif">
     </div>
 
+
+    <button onclick="playMusic()" style="border: none; background: none; padding: 0;">
+        <img src="/static/poto/Ditto Watching GIF.gif" alt="點擊播放音樂">
+    </button>
+    
+    <audio id="bgMusic" loop>
+        <source src="/static/bgm/MoonsideHowBGM.mp3" type="audio/mpeg">
+    </audio>
+    
+    <script>
+        function playMusic() {
+            let audio = document.getElementById("bgMusic");
+            audio.play();
+        }
+    </script>
+    
+
     <div class="w3-container w3-center">
-        <audio id="bgMusic" loop preload="auto" controls autoplay loop muted>
+        <audio id="bgMusic" loop preload="auto" controls autoplay>
             <source src="/static/bgm/MoonsideHowBGM.mp3" type="audio/mpeg">
             您的瀏覽器不支援音訊播放元素。
         </audio>
         
-         <audio controls autoplay loop muted>
+         <audio controls autoplay>
             <source src="{{ url_for('serve_audio', filename='MoonsideHowBGM.mp3') }}" type="audio/mp3">
             您的瀏覽器不支援音訊播放元素。
         </audio>
-        <audio id="bgMusic2" loop preload="auto" controls autoplay loop muted>
+        <audio id="bgMusic2" loop preload="auto" controls autoplay>
             <source src="/static/bgm/BGM.ogg" type="audio/mpeg">
             您的瀏覽器不支援音訊播放元素。
         </audio>
