@@ -1,6 +1,7 @@
 let isMuted = false;
 let isPlaying = false;  // 追蹤音樂是否正在播放
 
+// 播放音樂的函數
 function playAudio() {
     const audio = document.getElementById('bgMusic');
     if (!isPlaying) {  // 只在音樂未播放時執行
@@ -25,6 +26,8 @@ function playAudio() {
         }
     }
 }
+
+// 切換靜音和解除靜音
 function toggleMute() {
     const audio = document.getElementById('bgMusic');
     const muteBtn = document.getElementById('muteBtn');
@@ -33,8 +36,10 @@ function toggleMute() {
     muteBtn.innerHTML = isMuted ? '<i class="fas fa-volume-mute"></i>' : '<i class="fas fa-volume-up"></i>';
 }
 
-// 事件監聽器
+// 頁面加載時播放音樂
 window.addEventListener('load', playAudio);
+
+// 當頁面卸載時停止播放音樂
 window.addEventListener('beforeunload', function() {
     const audio = document.getElementById('bgMusic');
     audio.pause();
@@ -42,7 +47,7 @@ window.addEventListener('beforeunload', function() {
     isPlaying = false;
 });
 
-// 當音樂結束時重設狀態
+// 當音樂結束時重設播放狀態
 document.getElementById('bgMusic').addEventListener('ended', function() {
     isPlaying = false;
 });
