@@ -32,16 +32,16 @@
     </div>
 
     <div class="w3-container w3-center">
-        <audio id="bgMusic" loop preload="auto" controls autoplay>
+        <audio id="bgMusic" loop preload="auto" controls autoplay loop muted>
             <source src="/static/bgm/MoonsideHowBGM.mp3" type="audio/mpeg">
             您的瀏覽器不支援音訊播放元素。
         </audio>
         
-         <audio controls autoplay>
+         <audio controls autoplay loop muted>
             <source src="{{ url_for('serve_audio', filename='MoonsideHowBGM.mp3') }}" type="audio/mp3">
             您的瀏覽器不支援音訊播放元素。
         </audio>
-        <audio id="bgMusic2" loop preload="auto" controls autoplay>
+        <audio id="bgMusic2" loop preload="auto" controls autoplay loop muted>
             <source src="/static/bgm/BGM.ogg" type="audio/mpeg">
             您的瀏覽器不支援音訊播放元素。
         </audio>
